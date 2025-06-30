@@ -1,6 +1,6 @@
 {
   "include": [
-    "src",
+    "src/**/*",
     "App.tsx",
     "./typings.d.ts"
   ],

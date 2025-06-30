@@ -9,13 +9,13 @@
     "url": "git+https://github.com/karshchan/react-native-country-picker-modal.git"
   },
   "scripts": {
-    "prepare": "npm run build", 
+    "prepare": "npm run build",
     "start": "yarn config:dev && expo start",
     "start:web": "yarn config:dev && expo start -w --dev",
     "tsc": "node_modules/.bin/tsc --noEmit",
-    "build": "rm -rf lib/ && node_modules/.bin/tsc && cp -rf ./src/assets ./lib/assets && yarn minify",
-    "minify": "node ./scripts/minify.js ./lib/assets/data/countries-emoji.json",
-    "minify:emoji": "./scripts/minify.js ./lib/assets/data/countries-emoji.json",
+    "build": "rimraf lib && npx tsc && xcopy /E /I src\\assets lib\\assets && move lib\\src\\* lib\\ && rimraf lib\\src && yarn minify",
+    "minify": "yarn minify:emoji",
+    "minify:emoji": "node ./scripts/minify.js ./lib/assets/data/countries-emoji.json",
     "config:dev": "json -I -f package.json -e 'this.main=\"node_modules/expo/AppEntry.js\"'",
     "config:npm": "json -I -f package.json -e 'this.main=\"lib/index.js\"'",
     "lint": "eslint .",
@@ -83,7 +83,8 @@
     "react-native": "0.72.5",
     "react-native-web": "^0.19.9",
     "react-test-renderer": "18.2.0",
-    "typescript": "5.2.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.2.2",
     "world-countries": "5.0.0"
   },
   "jest": {
