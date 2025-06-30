@@ -9,6 +9,7 @@
     "url": "git+https://github.com/karshchan/react-native-country-picker-modal.git"
   },
   "scripts": {
+    "prepare": "npm run build",
     "start": "yarn config:dev && expo start",
     "start:web": "yarn config:dev && expo start -w --dev",
     "tsc": "node_modules/.bin/tsc --noEmit",
